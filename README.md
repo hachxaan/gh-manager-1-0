@@ -133,6 +133,9 @@ query {
 }
 ```
 
+# Diagrams
+<img src="http://statics.lared-codeart.com/Secuencia-HotelInsights.png">
+
 # Tools
 
 ##### RedisInsight 2.0
