@@ -64,7 +64,7 @@ $ yarn test:cov
 
 ##### [Local graphql URL](`http://127.0.0.1:3000/graphql`): `http://127.0.0.1:3000/graphql`
 
-##### [Demo Live graphql URL](`http://127.0.0.1:3000/graphql`): `http://127.0.0.1:3000/graphql`
+##### [Demo Live graphql URL](`http://gh-manager.lared-codeart.com/graphql`): `http://127.0.0.1:3000/graphql`
 
 --- **Hotel Insights** - Retrieve prices about certain hotel from different competitors.
 
@@ -140,3 +140,4 @@ query {
 -Reference: https://redis.com/blog/introducing-redisinsight-2/
 
 ##### [Monitoring Cache](`http://127.0.0.1:8001/`): `http://127.0.0.1:8001/`
+##### [Demo Live Monitoring Cache](`http://gh-redis.lared-codeart.com/`): `http://gh-redis.lared-codeart.com/`
