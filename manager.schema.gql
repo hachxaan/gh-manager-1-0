@@ -1,0 +1,97 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type pricesType {
+  competitor_name: String!
+  currency: String!
+  taxes: Float!
+  amount: Float!
+  date: String!
+}
+
+type roomType {
+  room_id: String!
+  room_name: String!
+  room_type: String!
+  prices: [pricesType!]!
+  last_updated_at: String!
+}
+
+type InsightsType {
+  room: [roomType!]!
+}
+
+type BestPriceType {
+  competitor_name: String!
+  gross_amount: Float!
+  net_amount: Float!
+}
+
+type AveragePriceType {
+  competitor_name: String!
+  gross_amount: Float!
+  net_amount: Float!
+}
+
+type WorstPriceType {
+  competitor_name: String!
+  gross_amount: Float!
+  net_amount: Float!
+}
+
+type metricsType {
+  best_price: BestPriceType!
+  average_price: AveragePriceType!
+  worst_price: WorstPriceType!
+}
+
+type roomMetricsType {
+  room_id: String!
+  room_name: String!
+  date: String!
+  metrics: metricsType!
+}
+
+type MetricsType {
+  room: [roomMetricsType!]!
+}
+
+type PingType {
+  db: String!
+  local_api: String!
+  local_cache: String!
+  external_api: String!
+}
+
+type Query {
+  getHotelInsights(input: InsightsInput!): [InsightsType!]!
+  getHotelMetrics(input: MetricsInput!): [MetricsType!]!
+  ping: PingType!
+}
+
+input InsightsInput {
+  hotel_id: Float!
+  period: Period!
+  room_type: RoomsType!
+  limit: Float
+}
+
+"""Consulting period [30|60|90] days"""
+enum Period {
+  P30
+  P60
+  P90
+}
+
+"""Rooms Type [business|residential]"""
+enum RoomsType {
+  business
+  residential
+}
+
+input MetricsInput {
+  hotel_id: Float!
+  day: String!
+  room_type: RoomsType!
+}

@@ -1,0 +1,59 @@
+version: '3.3'
+
+services:
+  mongo_db:
+    image: mongo
+    container_name: db-gh-manger
+    hostname: host-mongodb
+    env_file: .env
+    environment:
+      - MONGO_ROOT_USER=$MONGO_ROOT_USER
+      - MONGO_ROOT_PASSWORD=$MONGO_ROOT_PASSWORD
+    volumes:
+      - './data:/data/db'
+      - './data/log:/var/log/mongodb'
+      # - './database:/data/configdb'
+      # - '/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro'
+    ports:
+      - 27017:27017
+    restart: always
+    networks:
+      - gh-network
+
+  redis:
+    image: redislabs/rejson
+    container_name: redis-gh-manger
+    hostname: redis
+    ports:
+      - 6379:6379
+    networks:
+      - gh-network
+
+  redisinsight:
+    image: redislabs/redisinsight:latest
+    container_name: insight-gh-manger
+    volumes:
+      - './redisinsight:/db'
+    ports:
+      - 8001:8001
+    networks:
+      - gh-network
+
+  gh-manager:
+    container_name: 'gh-manger'
+    build: .
+    command: yarn start
+    env_file: .env
+    volumes:
+      - .:/app
+      - /app/node_modules
+    ports:
+      - $PORT:$PORT
+    networks:
+      - gh-network
+    restart: unless-stopped
+    depends_on:
+      - mongo_db
+
+networks:
+  gh-network:
