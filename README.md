@@ -64,7 +64,7 @@ $ yarn test:cov
 
 ##### [Local graphql URL](`http://127.0.0.1:3000/graphql`): `http://127.0.0.1:3000/graphql`
 
-##### [Demo Live graphql URL](`http://gh-manager.lared-codeart.com/graphql`): `http://127.0.0.1:3000/graphql`
+##### [Demo Live graphql URL](`http://gh-manager.lared-codeart.com/graphql`): `http://gh-manager.lared-codeart.com/graphql`
 
 --- **Hotel Insights** - Retrieve prices about certain hotel from different competitors.
 
